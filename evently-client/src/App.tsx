@@ -1,10 +1,9 @@
-
-import './App.css'
+import EventList from "./components/EventList";
 
 function App() {
   return (
-    <div className="flex items-center justify-center h-screen bg-green-500 text-white text-3xl">
-      Tailwind fonctionne 🚀
+    <div className="min-h-screen bg-gray-100">
+      <EventList />
     </div>
   );
 }
