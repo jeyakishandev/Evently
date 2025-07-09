@@ -8,6 +8,7 @@ function App() {
       <LoginForm />
       <EventForm />
       <EventList />
+      
     </div>
   );
 }
