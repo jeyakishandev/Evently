@@ -37,9 +37,9 @@ export const login = async (req: Request, res: Response) => {
       return res.status(400).json({ message: "Mot de passe incorrect" });
     }
 
-    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!, {
-      expiresIn: "7d",
-    });
+    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!, { expiresIn: '7d' });
+
+
 
     res.status(200).json({ token, userId: user.id });
   } catch (error) {

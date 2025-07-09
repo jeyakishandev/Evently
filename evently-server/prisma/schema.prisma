@@ -17,18 +17,18 @@ model User {
 }
 
 model Event {
-  id          Int            @id @default(autoincrement())
-  title       String
-  desc        String
-  place       String
-  date        DateTime
-  image       String?
-  category    Category?      @relation(fields: [categoryId], references: [id])
-  categoryId  Int?
-  creator     User           @relation("UserEvents", fields: [creatorId], references: [id])
-  creatorId   Int
-  attendees   Participation[]
+  id         Int      @id @default(autoincrement())
+  title      String
+  desc       String?
+  place      String?
+  date       DateTime
+  image      String?
+  categoryId Int?
+  creatorId  Int
+  creator    User     @relation(fields: [creatorId], references: [id])
+  category   Category? @relation(fields: [categoryId], references: [id])
 }
+
 
 model Category {
   id     Int     @id @default(autoincrement())

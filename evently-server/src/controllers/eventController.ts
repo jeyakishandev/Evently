@@ -5,7 +5,9 @@ const prisma = new PrismaClient();
 
 export const createEvent = async (req: Request, res: Response) => {
   const { title, desc, place, date, image, categoryId } = req.body;
-  const userId = (req as any).user.userId;
+  const userId = (req as any).userId;
+console.log("Données reçues dans le body :", req.body);
+console.log("UserId récupéré :", userId);
 
   try {
     const event = await prisma.event.create({
@@ -24,6 +26,7 @@ export const createEvent = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Erreur lors de la création de l'événement", error });
   }
 };
+
 
 export const getEvents = async (req: Request, res: Response) => {
   try {
@@ -86,7 +89,8 @@ export const deleteEvent = async (req: Request, res: Response) => {
 
 export const joinEvent = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const userId = (req as any).user.userId;
+  const userId = (req as any).userId;
+
 
   try {
     const participation = await prisma.participation.create({
@@ -103,7 +107,8 @@ export const joinEvent = async (req: Request, res: Response) => {
 
 export const leaveEvent = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const userId = (req as any).user.userId;
+  const userId = (req as any).userId;
+
 
   try {
     await prisma.participation.deleteMany({
